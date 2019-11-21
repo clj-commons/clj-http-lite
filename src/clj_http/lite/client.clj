@@ -4,6 +4,7 @@
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [clj-http.lite.core :as core]
+            [clj-http.lite.links :refer [wrap-links]]
             [clj-http.lite.util :as util])
   (:import (java.io InputStream File)
            (java.net URL UnknownHostException))
@@ -240,6 +241,7 @@
       wrap-content-type
       wrap-form-params
       wrap-method
+      wrap-links
       wrap-unknown-host))
 
 (def #^{:doc
