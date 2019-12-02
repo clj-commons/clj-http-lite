@@ -19,12 +19,13 @@
 (defn url-decode
   "Returns the form-url-decoded version of the given string, using either a
   specified encoding or UTF-8 by default."
-  [encoded & [encoding]]
-  (URLDecoder/decode encoded (or encoding "UTF-8")))
+  [^String encoded & [encoding]]
+  (let [^String encoding (or encoding "UTF-8")]
+    (URLDecoder/decode encoded encoding)))
 
 (defn url-encode
   "Returns an UTF-8 URL encoded version of the given string."
-  [unencoded]
+  [^String unencoded]
   (URLEncoder/encode unencoded "UTF-8"))
 
 (defmacro base64-encode
