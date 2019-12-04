@@ -13,5 +13,7 @@ jobs:
         uses: DeLaGuardo/setup-clojure@2.0
         with:
           lein: 2.9.1
+      - name: Checkout
+        uses: actions/checkout@v2-beta
       - name: Run tests
         run: lein test :all
