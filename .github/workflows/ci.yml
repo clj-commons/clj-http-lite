@@ -11,5 +11,7 @@ jobs:
           java-version: 1.8
       - name: Setup Clojure
         uses: DeLaGuardo/setup-clojure@2.0
+        with:
+          lein: 2.9.1
       - name: Run tests
         run: lein test :all
