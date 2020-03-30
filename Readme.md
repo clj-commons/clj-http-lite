@@ -202,6 +202,16 @@ such), check out the
     :form-params {"toplevel[nested]" some-data}    ; works
     ```
 
+- If you issue HTTPS connections, [Native Image](https://www.graalvm.org/docs/reference-manual/native-image/) compilation requires an additional parameter in order to enable its support in the generated image.
+
+  If you get the following kind of error:
+
+      Exception in thread "main" java.net.MalformedURLException: Accessing an URL protocol that was not enabled.  
+      The URL protocol https is supported but not enabled by default. It must be enabled by adding the
+      -H:EnableURLProtocols=https option to the native-image command.
+
+  Then add either `-H:EnableURLProtocols=https` or `--enable-https` option to your compilation step.
+
 ## Design
 
 The design of `clj-http` is inspired by the
