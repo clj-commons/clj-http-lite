@@ -123,6 +123,16 @@
   (is-passed client/wrap-accept
              {:uri "/foo"}))
 
+(deftest apply-on-oauth
+  (is-applied client/wrap-oauth
+              {:oauth-token "sample-token"}
+              {:headers {"Authorization" "Bearer sample-token"}}))
+
+(deftest pass-on-no-oauth
+  (is-passed client/wrap-oauth
+             {:uri "/foo"}))
+
+
 (deftest apply-on-accept-encoding
   (is-applied client/wrap-accept-encoding
               {:accept-encoding [:identity :gzip]}

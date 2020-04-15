@@ -6,6 +6,7 @@
 - Remove dependency on slingshot
 - Move to `org.clj-commons` group
 - Add compatibility with [babashka](https://babashka.org/)
+- **Feature:** Support for`:oauth-token` ([#1](https://github.com/martinklepsch/clj-http-lite/pull/7))
 
 ### 0.4.3
 

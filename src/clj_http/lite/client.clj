@@ -222,6 +222,14 @@
           nil
           (throw e))))))
 
+(defn wrap-oauth [client]
+  (fn [{:keys [oauth-token] :as req}]
+    (if oauth-token
+      (client (-> req (dissoc :oauth-token)
+                  (assoc-in [:headers "Authorization"]
+                            (str "Bearer " oauth-token))))
+      (client req))))
+
 (defn wrap-request
   "Returns a battaries-included HTTP request function coresponding to the given
    core client. See client/client."
@@ -242,7 +250,8 @@
       wrap-form-params
       wrap-method
       wrap-links
-      wrap-unknown-host))
+      wrap-unknown-host
+      wrap-oauth))
 
 (def #^{:doc
         "Executes the HTTP request corresponding to the given map and returns
