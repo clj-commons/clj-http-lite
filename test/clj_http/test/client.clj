@@ -132,7 +132,6 @@
   (is-passed client/wrap-oauth
              {:uri "/foo"}))
 
-
 (deftest apply-on-accept-encoding
   (is-applied client/wrap-accept-encoding
               {:accept-encoding [:identity :gzip]}
