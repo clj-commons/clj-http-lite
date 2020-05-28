@@ -1,7 +1,7 @@
 (defproject org.martinklepsch/clj-http-lite "0.4.3"
   :description "A Clojure HTTP library similar to clj-http, but more lightweight."
   :url "https://github.com/martinklepsch/clj-http-lite/"
-  :warn-on-reflection false
+  :global-vars {*warn-on-reflection* true}
   :license {:name "MIT"
             :url "http://www.opensource.org/licenses/mit-license.php"}
   :dependencies [[org.clojure/clojure "1.8.0"]
