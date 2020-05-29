@@ -10,6 +10,8 @@
            (java.net URL UnknownHostException))
   (:refer-clojure :exclude (get update)))
 
+(set! *warn-on-reflection* true)
+
 (defn update [m k f & args]
   (assoc m k (apply f (m k) args)))
 

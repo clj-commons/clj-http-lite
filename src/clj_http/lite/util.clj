@@ -6,6 +6,8 @@
            (java.util.zip InflaterInputStream DeflaterInputStream
                           GZIPInputStream GZIPOutputStream)))
 
+(set! *warn-on-reflection* true)
+
 (defn utf8-bytes
   "Returns the UTF-8 bytes corresponding to the given string."
   [#^String s]

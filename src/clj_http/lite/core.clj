@@ -4,6 +4,8 @@
   (:import (java.io ByteArrayOutputStream InputStream IOException)
            (java.net URI URL HttpURLConnection)))
 
+(set! *warn-on-reflection* true)
+
 (defn parse-headers
   "Takes a URLConnection and returns a map of names to values.
 

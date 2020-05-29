@@ -3,6 +3,8 @@
 
   Imported from https://github.com/dakrone/clj-http/blob/217393258e7863514debece4eb7b23a7a3fa8bd9/src/clj_http/links.clj")
 
+(set! *warn-on-reflection* true)
+
 (def ^:private quoted-string
   #"\"((?:[^\"]|\\\")*)\"")
 
