@@ -36,8 +36,12 @@
 (defn extract-version [tag]
   (str/replace-first tag release-marker ""))
 
+(defn ci-tag []
+  (when (= "tag" (System/getenv "GITHUB_REF_TYPE"))
+    (System/getenv "GITHUB_REF_NAME")))
+
 (defn maybe-deploy [opts]
-  (if-let [tag (System/getenv "CIRCLE_TAG")]
+  (if-let [tag (ci-tag)]
     (do
       (println "Found tag " tag)
       (if (re-find (re-pattern release-marker) tag)
