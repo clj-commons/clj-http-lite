@@ -34,3 +34,16 @@ jobs:
 
       - name: tests
         run: bb test:bb
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2-beta
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@3.5
+        with:
+          # Install just one or all simultaneously
+          cli: 1.10.3.1029 # Clojure CLI based on tools.deps
+      - name: Deploy
+        run: env
+        run: clojure -T:build maybe-deploy
