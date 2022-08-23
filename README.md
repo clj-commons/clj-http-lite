@@ -234,11 +234,63 @@ A proxy can be specified by setting the Java properties:
 `<scheme>.proxyHost` and `<scheme>.proxyPort` where `<scheme>` is the client
 scheme used (normally 'http' or 'https').
 
-## Faking clj-http responses
+## Mocking clj-http responses
 
-If you need to fake clj-http responses (for things like testing and
-such), check out the
-[clj-http-fake](https://github.com/myfreeweb/clj-http-fake) library.
+Mocking responses from the clj-http-lite client in tests is easily accomplished with e.g. `with-redefs`:
+
+```clojure
+(defn my-http-function []
+  (let [response (client/get "https://example.org")]
+    (when (= 200 (:status response))
+      (:body response))))
+
+(deftest my-http-function-test
+  (with-redefs [client/get (fn [_] {:status 200 :headers {"content-type" "text/plain"} :body "OK"})]
+    (is (= (my-http-function) "OK"))))
+```
+
+More advanced mocking may be performed by matching attributes in the `request`, like the `mock-response` function below.
+
+```clojure
+(ns http-test
+  (:require [clojure.data.json :as json]
+            [clojure.test :refer [deftest is testing]]
+            [clj-http.lite.client :as client]))
+
+(defn send-report [data]
+  (:body (client/post "https://example.com/reports" {:body data})))
+
+(defn get-users []
+  (json/read-str (:body (client/get "https://example.com/users"))))
+
+(defn get-admin []
+  (let [response (client/get "https://example.com/admin")]
+    (if (= 200 (:status response))
+      (:body response)
+      "403 Forbidden")))
+
+(defn mock-response [{:keys [url method body] :as request}]
+  (condp = [url method]
+    ["https://example.com/reports" :post]
+    {:status  201 :headers {"content-type" "text/plain"} :body (str "created: " body)}
+
+    ["https://example.com/users" :get]
+    {:status 200 :headers {"content-type" "application/json"} :body (json/write-str ["joe" "jane" "bob"])}
+
+    ["https://example.com/admin" :get]
+    {:status 403 :headers {"content-type" "text/plain"} :body "forbidden"}
+
+    (throw (ex-info "unexpected request" request))))
+
+(deftest send-report-test
+  (with-redefs [client/request mock-response]
+    (testing "sending report"
+      (is (= (send-report {:balance 100}) "created: {:balance 100}")))
+    (testing "list users"
+      (is (= (get-users) ["joe" "jane" "bob"])))
+    (testing "access admin page"
+      (is (= (get-admin) "403 Forbidden")))))
+```
 
 ## GraalVM Native Image Tips
 

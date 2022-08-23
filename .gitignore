@@ -27,3 +27,5 @@ aws.clj
 /.lein-deps-sum
 .cache
 .cpcache
+.idea
+*.iml
