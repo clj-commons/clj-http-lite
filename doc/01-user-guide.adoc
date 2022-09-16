@@ -55,7 +55,7 @@ Clojure cli users, add the following under `:deps` in your `deps.edn` file. +
 Babashka users, add the following under `:deps` in your `bb.edn` file:
 [source,clojure,subs="attributes+"]
 ----
-    org.clj-commons/clj-http-lite {:mnv/version "{lib-version}"}
+    org.clj-commons/clj-http-lite {:mvn/version "{lib-version}"}
 ----
 
 Lein users, add the following into the `:dependencies` vector in your `project.clj` file:
