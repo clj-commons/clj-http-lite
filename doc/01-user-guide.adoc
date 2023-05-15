@@ -41,14 +41,15 @@ Maybe clj-http-lite is not your cup of tea? Some alternatives to explore:
 
 Clojure based:
 
-* http://github.com/dakrone/clj-http[clj-http] - heavier than clj-http-lite, but has many more features
+* http://github.com/dakrone/clj-http[clj-http] (jdk8+) - heavier than clj-http-lite, but has many more features
 
 Babashka compatible:
 
-* https://github.com/schmee/java-http-clj[java-http-clj] - Clojure wrapper for java.net.http with async, HTTP/2 and WebSockets
-* https://github.com/http-kit/http-kit[http-kit] - minimalist, event-driven, high-performance Clojure HTTP server/client library with WebSocket and asynchronous support
-* https://github.com/gnarroway/hato[hato] - An HTTP client for Clojure, wrapping JDK 11's HttpClient
-* https://github.com/babashka/babashka.curl[babashka.curl] - A tiny curl wrapper via idiomatic Clojure, inspired by clj-http, Ring and friends
+* https://github.com/babashka/http-client[org.babashka/http-client] (jdk11+) - HTTP client for Clojure and Babashka built on java.net.http 
+* https://github.com/schmee/java-http-clj[java-http-clj] (jdk11+) - Clojure wrapper for java.net.http with async, HTTP/2 and WebSockets
+* https://github.com/http-kit/http-kit[http-kit] (jdk8+?) - minimalist, event-driven, high-performance Clojure HTTP server/client library with WebSocket and asynchronous support
+* https://github.com/gnarroway/hato[hato] (jdk11+) - An HTTP client for Clojure, wrapping JDK 11's HttpClient
+* https://github.com/babashka/babashka.curl[babashka.curl] (jdk8+) - A tiny curl wrapper via idiomatic Clojure, inspired by clj-http, Ring and friends (now mostly replaced by org.babashka/http-client)
 
 == Installation
 
