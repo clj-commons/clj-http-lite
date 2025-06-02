@@ -8,17 +8,17 @@
   :1.8 {:override-deps {org.clojure/clojure {:mvn/version "1.8.0"}}}
   :1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0"}}}
   :1.10 {:override-deps {org.clojure/clojure {:mvn/version "1.10.3"}}}
-  :1.11 {:override-deps {org.clojure/clojure {:mvn/version "1.11.3"}}}
-  :1.12 {:override-deps {org.clojure/clojure {:mvn/version "1.12.0"}}}
+  :1.11 {:override-deps {org.clojure/clojure {:mvn/version "1.11.4"}}}
+  :1.12 {:override-deps {org.clojure/clojure {:mvn/version "1.12.1"}}}
   :build
   {:extra-paths ["build"]
-   :deps {io.github.clojure/tools.build {:mvn/version "0.10.8"}
+   :deps {io.github.clojure/tools.build {:mvn/version "0.10.9"}
           slipset/deps-deploy {:mvn/version "0.2.2"}}
    :ns-default build}
   :http-server ;; used for to support integration tests
   {:extra-paths ["test" "test-resources"]
-   :override-deps {org.clojure/clojure {:mvn/version "1.11.3"}}
-   :extra-deps {babashka/fs {:mvn/version "0.5.24"}
+   :override-deps {org.clojure/clojure {:mvn/version "1.12.1"}}
+   :extra-deps {babashka/fs {:mvn/version "0.5.25"}
                 ring/ring-jetty-adapter {:mvn/version "1.10.0"} ;; stick with version that works on jdk8
                 ch.qos.logback/logback-classic {:mvn/version "1.3.15"
                                                 :exclusions [org.slf4j/slf4j-api]}
@@ -33,10 +33,10 @@
    :main-opts ["-m" "cognitect.test-runner"]}
   ;; for consistent linting we use a specific version of clj-kondo through the jvm
   :clj-kondo {:extra-deps {clj-kondo/clj-kondo {:mvn/version "2025.04.07"}}
-              :override-deps {org.clojure/clojure {:mvn/version "1.11.3"}}
+              :override-deps {org.clojure/clojure {:mvn/version "1.12.1"}}
               :main-opts ["-m" "clj-kondo.main"]}
   :outdated {:extra-deps {com.github.liquidz/antq {:mvn/version  "2.11.1276"}
-                          org.clojure/clojure {:mvn/version "1.12.0"}
+                          org.clojure/clojure {:mvn/version "1.12.1"}
                           org.slf4j/slf4j-simple {:mvn/version "2.0.17"} ;; to rid ourselves of logger warnings
                           }
              :main-opts ["-m" "antq.core"
@@ -44,4 +44,6 @@
                          "--exclude=ch.qos.logback/logback-classic@1.5.x" ;; requires min jdk 11, we are jdk8 compatible
                          "--exclude=ring/ring-jetty-adapter@1.11.x" ;; requires jdk 11, we are jdk8 compatible
                          "--exclude=ring/ring-jetty-adapter@1.12.x" ;; requires jdk 11, we are jdk8 compatible
+                         "--exclude=ring/ring-jetty-adapter@1.13.x" ;; requires jdk 11, we are jdk8 compatible
+                         "--exclude=ring/ring-jetty-adapter@1.14.x" ;; requires jdk 11, we are jdk8 compatible
                          ]}}}
