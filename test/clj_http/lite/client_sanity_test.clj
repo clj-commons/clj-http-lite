@@ -26,7 +26,7 @@
                                     :throw-exceptions false})))))
 
 (deftest exception-test
-  (try (client/get "https://site.com/broken")
+  (try (client/get "https://httpbin.org/status/404")
        (is false "should not reach here")
        (catch Exception e
          (is (:headers (ex-data e))))))
