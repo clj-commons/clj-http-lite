@@ -45,5 +45,6 @@
                          "--exclude=ring/ring-jetty-adapter@1.11.x" ;; requires jdk 11, we are jdk8 compatible
                          "--exclude=ring/ring-jetty-adapter@1.12.x" ;; requires jdk 11, we are jdk8 compatible
                          "--exclude=ring/ring-jetty-adapter@1.13.x" ;; requires jdk 11, we are jdk8 compatible
-                         "--exclude=ring/ring-jetty-adapter@1.14.x" ;; requires jdk 11, we are jdk8 compatible
+                         "--exclude=ring/ring-jetty-adapter@1.14.x" ;; requires jdk 17, we are jdk8 compatible
+                         "--exclude=ring/ring-jetty-adapter@1.15.x" ;; requires jdk 17, we are jdk8 compatible
                          ]}}}
