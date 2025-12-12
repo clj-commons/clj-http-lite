@@ -28,7 +28,8 @@
          {:doc "Runs tests under babashka Clojure (recognizes cognitect test-runner args)"
           :extra-paths ["src" "test" "test-resources"]
           :extra-deps {io.github.cognitect-labs/test-runner
-                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}
+                       nubank/matcher-combinators {:mvn/version "3.9.2"}}
           :requires ([cognitect.test-runner :as tr])
           :task (apply tr/-main *command-line-args*)}
          lint
