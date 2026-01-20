@@ -46,7 +46,7 @@
           :task publish/-main}
          neil ;; let's not rely on a random version of neil
          {:doc "Pinned version of babashka/neil (used in scripting)"
-          :extra-deps {io.github.babashka/neil {:git/tag "v0.3.68" :git/sha "78ffab1"}}
+          :extra-deps {io.github.babashka/neil {:git/tag "v0.3.69" :git/sha "fa79321"}}
           :task babashka.neil/-main}
          ;; hidden tasks, no need for folks to be trying these ci invoked tasks
          -ci-clojars-deploy
