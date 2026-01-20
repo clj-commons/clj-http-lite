@@ -1,6 +1,6 @@
 {:paths ["script" "build"]
  :deps {lread/status-line {:git/url "https://github.com/lread/status-line.git"
-                           :sha "cf44c15f30ea3867227fa61ceb823e5e942c707f"}
+                           :sha "eace48e2e0fcc65a3986d696fb0b910fa5790a1c"}
         version-clj/version-clj {:mvn/version "2.0.3"}}
  :tasks {;; setup
          :requires ([babashka.fs :as fs]
@@ -46,7 +46,7 @@
           :task publish/-main}
          neil ;; let's not rely on a random version of neil
          {:doc "Pinned version of babashka/neil (used in scripting)"
-          :extra-deps {io.github.babashka/neil {:git/tag "v0.3.68" :git/sha "78ffab1"}}
+          :extra-deps {io.github.babashka/neil {:git/tag "v0.3.69" :git/sha "fa79321"}}
           :task babashka.neil/-main}
          ;; hidden tasks, no need for folks to be trying these ci invoked tasks
          -ci-clojars-deploy
